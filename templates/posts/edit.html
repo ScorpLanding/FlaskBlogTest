@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Edit Post
+{% endblock %}
+
+{% block content_title %}
+    <h1 class="display-4 col-md-6 offset-md-3" align="center">Edit Post</h1>
+{% endblock %}
+
+{% block content %}
+<div class="col-lg-6">
+    <form action="{{ url_for('posts.edit_post', url_for_pers=post.url_for_pers) }}" method="post">
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label(class="control-label") }}
+                {{ field(class="form-control") }}
+            </div>
+        {% endfor %}
+    <button class="btn btn-lg btn-success">Edit post</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+
+{% block content_title %}
+{% endblock %}
+
+
+{% block content %}
+    {% for tag in tags %}
+
+            <a href="{{ url_for('posts.tag_detail', url_for_tag=tag.url_for_tag) }}">
+            <span class="badge badge-pill badge-dark">{{ tag.name }}</span></a>
+
+    {% endfor %}
+    <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+      <h1 class="display-4" align="center">{{ post.title }}</h1>
+    <p class="lead">{{ post.body }}</p>
+  </div>
+    <a href="{{ url_for('posts.edit_post', url_for_pers=post.url_for_pers) }}"><button class="btn btn-lg btn-success col-md-3 offset-md-8">Edit Post</button></a>
+</div>
+{% endblock %}
